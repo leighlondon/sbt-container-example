@@ -1,0 +1,18 @@
+version: '3.5'
+
+x-sbt: &sbt
+  image: hseeberger/scala-sbt:8u181_2.12.7_1.2.6
+  volumes:
+  - ".:/app"
+  - "~/.ivy2:/root/.ivy2"
+  - "~/.sbt:/root/.sbt"
+  working_dir: /app
+
+services:
+  test:
+    <<: *sbt
+    command: sbt test
+
+  integration:
+    <<: *sbt
+    command: sbt it:test
