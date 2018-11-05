@@ -1,0 +1,10 @@
+sudo: true
+dist: trusty
+
+jobs:
+  include:
+    - stage: "Tests"
+      name: "Unit Tests"
+      script: docker-compose run test
+    - name: "Integration Tests"
+      script: docker-compose run integration
