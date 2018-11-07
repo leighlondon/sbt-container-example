@@ -1,7 +1,9 @@
-version: '2.1'
+version: '3.5'
 
 x-sbt: &sbt
-  image: hseeberger/scala-sbt:8u181_2.12.7_1.2.6
+  build:
+    context: .
+    target: base
   volumes:
   - ".:/app"
   - "~/.ivy2:/root/.ivy2"
@@ -16,3 +18,8 @@ services:
   integration:
     <<: *sbt
     command: sbt it:test
+
+  kss:
+    build:
+      context: .
+      target: app
