@@ -1,5 +1,3 @@
-sudo: true
-dist: trusty
 language: scala
 
 jobs:
