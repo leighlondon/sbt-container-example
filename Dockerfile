@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . .
 RUN sbt "set test in assembly := {}" clean assembly
 
-FROM openjdk:8-jre-alpine AS app
+FROM openjdk:8-jre-alpine AS release
 WORKDIR /app
-COPY --from=builder /app/target/scala-2.12/sbt-container-example-*.jar container.jar
-CMD ["java", "-jar", "container.jar"]
+COPY --from=builder /app/target/scala-2.12/*.jar app.jar
+CMD ["java", "-jar", "app.jar"]

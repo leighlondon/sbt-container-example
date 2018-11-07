@@ -19,7 +19,7 @@ services:
     <<: *sbt
     command: sbt it:test
 
-  kss:
+  app:
     build:
       context: .
-      target: app
+      target: release
